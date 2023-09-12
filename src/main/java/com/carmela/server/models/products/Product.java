@@ -1,4 +1,4 @@
-package com.carmela.server.models;
+package com.carmela.server.models.products;
 
 import jakarta.persistence.*;
 import lombok.*;

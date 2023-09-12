@@ -1,6 +1,6 @@
 package com.carmela.server.services;
 
-import com.carmela.server.models.Product;
+import com.carmela.server.models.products.Product;
 
 import java.util.List;
 import java.util.Optional;

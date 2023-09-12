@@ -1,6 +1,6 @@
 package com.carmela.server.services;
 
-import com.carmela.server.models.Product;
+import com.carmela.server.models.products.Product;
 import com.carmela.server.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

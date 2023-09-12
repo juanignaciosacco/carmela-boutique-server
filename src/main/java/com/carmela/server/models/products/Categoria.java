@@ -1,4 +1,4 @@
-package com.carmela.server.models;
+package com.carmela.server.models.products;
 
 public enum Categoria {
 

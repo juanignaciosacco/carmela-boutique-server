@@ -1,6 +1,6 @@
 package com.carmela.server.controller;
 
-import com.carmela.server.models.Product;
+import com.carmela.server.models.products.Product;
 import com.carmela.server.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
