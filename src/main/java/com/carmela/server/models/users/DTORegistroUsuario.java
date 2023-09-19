@@ -16,19 +16,25 @@ import java.util.Date;
  */
 public record DTORegistroUsuario(
         
-        @NotBlank
+        @NotBlank(message = "El nombre es obligatorio")
         String nombre,
         
-        @NotBlank
+        @NotBlank(message = "El apellido es obligatorio")
         String apellido,
         
-        @NotBlank
+        @NotBlank(message = "El email es obligatorio")
         @Email
         String email,
+
+        @NotBlank(message = "La contraseña es obligatoria")
+        String password,
         
-        @NotNull
+        @NotNull(message = "La fecha de nacimiento es obligatorio")
         @Past(message = "La fecha no puede ser presente o futura!")
-        Date fechaNacimiento
+        Date fechaNacimiento,
+
+        @NotBlank(message = "El rol es obligatorio")
+        String rol
         
         ) {
 

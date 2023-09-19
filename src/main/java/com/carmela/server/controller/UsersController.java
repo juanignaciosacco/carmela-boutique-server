@@ -54,7 +54,7 @@ public class UsersController {
     public ResponseEntity<DTORespuestaUsuario> cargarUsuario(@RequestBody @Valid DTORegistroUsuario dtoRegistroUsuario, UriComponentsBuilder uriComponentsBuilder) {
         User user = service.save(new User(dtoRegistroUsuario));
         DTORespuestaUsuario dtoRespuestaUsuario = new DTORespuestaUsuario(user.getNombre(), 
-                user.getApellido(), user.getEmail(), user.getFechaNacimiento());
+                user.getApellido(), user.getEmail(), user.getFechaNacimiento(), user.getRol());
 //        URI url = uriComponentsBuilder.path("/usuarios/{id}").buildAndExpand(user.getId()).toUri();
 //        return ResponseEntity.created(url).body(dtoRespuestaUsuario);
         return ResponseEntity.status(HttpStatus.CREATED).body(dtoRespuestaUsuario);

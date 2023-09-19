@@ -18,7 +18,9 @@ public record DTORespuestaUsuario(
         
         String email,
 
-        Date fechaNacimiento
+        Date fechaNacimiento,
+
+        String rol
         
         ) {
 

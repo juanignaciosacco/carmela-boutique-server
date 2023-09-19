@@ -35,13 +35,17 @@ public class User {
     private String nombre;
     private String apellido;
     private String email;
+    private String password;
     private Date fechaNacimiento;
-    
+    private String rol;
+
     public User(DTORegistroUsuario dtoRegistroUsuario) {
         this.nombre = dtoRegistroUsuario.nombre();
         this.apellido = dtoRegistroUsuario.apellido();
         this.email = dtoRegistroUsuario.email();
+        this.password = dtoRegistroUsuario.password();
         this.fechaNacimiento = dtoRegistroUsuario.fechaNacimiento();
+        this.rol = dtoRegistroUsuario.rol();
     }
         
 }

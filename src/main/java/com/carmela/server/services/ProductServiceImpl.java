@@ -41,7 +41,7 @@ public class ProductServiceImpl implements ProductService {
        if (prod.isPresent()) {
            Product prodDb = prod.orElseThrow();
            prodDb.setCategoria(product.getCategoria());
-           prodDb.setImg(product.getImg());
+           prodDb.setImages(product.getImages());
            prodDb.setDescripcion(product.getDescripcion());
            prodDb.setNombre(product.getNombre());
            prodDb.setPrecioOferta(product.getPrecioOferta());

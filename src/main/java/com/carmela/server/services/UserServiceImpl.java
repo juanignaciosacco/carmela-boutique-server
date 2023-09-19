@@ -43,6 +43,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public Optional<User> update(User user, Long id) {   
         Optional<User> usu = this.findyByID(id);
         User userOptional = null;
@@ -58,6 +59,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public void remove(Long id) {
         repository.deleteById(id);
     }
