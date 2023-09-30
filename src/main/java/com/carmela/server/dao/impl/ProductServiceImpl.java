@@ -1,6 +1,7 @@
-package com.carmela.server.services;
+package com.carmela.server.dao.impl;
 
-import com.carmela.server.models.products.Product;
+import com.carmela.server.dao.service.ProductService;
+import com.carmela.server.models.product.Product;
 import com.carmela.server.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

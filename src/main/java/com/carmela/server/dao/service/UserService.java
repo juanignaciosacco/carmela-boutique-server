@@ -2,9 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.carmela.server.services;
+package com.carmela.server.dao.service;
 
-import com.carmela.server.models.users.User;
+import com.carmela.server.models.user.User;
 import java.util.List;
 import java.util.Optional;
 

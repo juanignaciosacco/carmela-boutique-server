@@ -1,6 +1,6 @@
-package com.carmela.server.services;
+package com.carmela.server.dao.service;
 
-import com.carmela.server.models.products.Product;
+import com.carmela.server.models.product.Product;
 
 import java.util.List;
 import java.util.Optional;

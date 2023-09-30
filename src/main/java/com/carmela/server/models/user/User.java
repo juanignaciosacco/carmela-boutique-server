@@ -2,8 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.carmela.server.models.users;
+package com.carmela.server.models.user;
 
+import com.carmela.server.dto.user.DTORegistroUsuario;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -34,7 +35,7 @@ public class User {
     private Long id;
     private String nombre;
     private String apellido;
-    private String email;
+    private String username;
     private String password;
     private Date fechaNacimiento;
     private String rol;
@@ -42,7 +43,7 @@ public class User {
     public User(DTORegistroUsuario dtoRegistroUsuario) {
         this.nombre = dtoRegistroUsuario.nombre();
         this.apellido = dtoRegistroUsuario.apellido();
-        this.email = dtoRegistroUsuario.email();
+        this.username = dtoRegistroUsuario.username();
         this.password = dtoRegistroUsuario.password();
         this.fechaNacimiento = dtoRegistroUsuario.fechaNacimiento();
         this.rol = dtoRegistroUsuario.rol();

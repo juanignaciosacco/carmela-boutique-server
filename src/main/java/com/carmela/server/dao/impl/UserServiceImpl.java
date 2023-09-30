@@ -2,9 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.carmela.server.services;
+package com.carmela.server.dao.impl;
 
-import com.carmela.server.models.users.User;
+import com.carmela.server.dao.service.UserService;
+import com.carmela.server.models.user.User;
 import com.carmela.server.repository.UserRepository;
 
 import java.util.List;
@@ -51,7 +52,7 @@ public class UserServiceImpl implements UserService {
             User userDb = usu.orElseThrow();
             userDb.setNombre(user.getNombre());
             userDb.setApellido(user.getApellido());
-            userDb.setEmail(user.getEmail());
+            userDb.setUsername(user.getUsername());
             userDb.setFechaNacimiento(user.getFechaNacimiento());
             userOptional = this.save(userDb);
         }

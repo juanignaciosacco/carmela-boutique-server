@@ -4,7 +4,7 @@
  */
 package com.carmela.server.repository;
 
-import com.carmela.server.models.users.User;
+import com.carmela.server.models.user.User;
 import org.springframework.data.repository.CrudRepository;
 
 /**

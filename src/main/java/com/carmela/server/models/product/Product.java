@@ -1,6 +1,6 @@
-package com.carmela.server.models.products;
+package com.carmela.server.models.product;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.carmela.server.dto.product.DTORegistroProducto;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 

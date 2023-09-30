@@ -4,22 +4,24 @@
  */
 package com.carmela.server.controller;
 
-import com.carmela.server.models.users.DTORegistroUsuario;
-import com.carmela.server.models.users.DTORespuestaUsuario;
-import com.carmela.server.models.users.User;
-import com.carmela.server.services.UserService;
+import com.carmela.server.dto.user.DTORegistroUsuario;
+import com.carmela.server.dto.user.DTORespuestaUsuario;
+import com.carmela.server.models.user.User;
+import com.carmela.server.dao.service.UserService;
 import jakarta.validation.Valid;
 //import java.net.URI;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
-import org.springframework.web.util.UriComponentsBuilder;
 
 /**
  *
@@ -51,21 +53,27 @@ public class UsersController {
     }
 
     @PostMapping
-    public ResponseEntity<DTORespuestaUsuario> cargarUsuario(@RequestBody @Valid DTORegistroUsuario dtoRegistroUsuario, UriComponentsBuilder uriComponentsBuilder) {
+    public ResponseEntity<?> cargarUsuario(@RequestBody @Valid DTORegistroUsuario dtoRegistroUsuario, BindingResult result) {
+        if (result.hasErrors()) {
+            return validation(result);
+        }
         User user = service.save(new User(dtoRegistroUsuario));
-        DTORespuestaUsuario dtoRespuestaUsuario = new DTORespuestaUsuario(user.getNombre(), 
-                user.getApellido(), user.getEmail(), user.getFechaNacimiento(), user.getRol());
-//        URI url = uriComponentsBuilder.path("/usuarios/{id}").buildAndExpand(user.getId()).toUri();
-//        return ResponseEntity.created(url).body(dtoRespuestaUsuario);
+        DTORespuestaUsuario dtoRespuestaUsuario = new DTORespuestaUsuario(user.getNombre(),
+                user.getApellido(), user.getUsername(), user.getFechaNacimiento(), user.getRol());
         return ResponseEntity.status(HttpStatus.CREATED).body(dtoRespuestaUsuario);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<User> update(@RequestBody User user, @PathVariable Long id) {
-        Optional<User> userOptional = service.update(user, id);
+    public ResponseEntity<?> update(@RequestBody @Valid DTORegistroUsuario dtoRegistroUsuario,BindingResult result, @PathVariable Long id) {
+        if (result.hasErrors()) {
+            return validation(result);
+        }
+        Optional<User> userOptional = service.update(new User(dtoRegistroUsuario), id);
         if (userOptional.isPresent())
         {
-            return ResponseEntity.status(HttpStatus.CREATED).body(userOptional.orElseThrow());
+            User usu = new User(dtoRegistroUsuario);
+            DTORespuestaUsuario dtoRespuestaUsuario = new DTORespuestaUsuario(usu.getNombre(), usu.getApellido(), usu.getUsername(), usu.getFechaNacimiento(), usu.getRol());
+            return ResponseEntity.status(HttpStatus.CREATED).body(dtoRespuestaUsuario);
         } else
         {
             return ResponseEntity.notFound().build();
@@ -83,5 +91,13 @@ public class UsersController {
         {
             return ResponseEntity.notFound().build();
         }
+    }
+
+    private ResponseEntity<?> validation(BindingResult result) {
+        Map<String, String> errors = new HashMap<>();
+        result.getFieldErrors().forEach(err -> {
+            errors.put(err.getField(), err.getDefaultMessage());
+        });
+        return ResponseEntity.badRequest().body(errors);
     }
 }

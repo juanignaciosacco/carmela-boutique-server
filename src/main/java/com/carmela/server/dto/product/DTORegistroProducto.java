@@ -2,8 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.carmela.server.models.products;
+package com.carmela.server.dto.product;
 
+import com.carmela.server.models.product.Categoria;
+import com.carmela.server.models.product.Images;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -20,7 +22,7 @@ public record DTORegistroProducto(
         @NotBlank(message = "El nombre es obligatorio")
         String nombre,
         
-        @NotBlank(message = "La descripcion es obligatorio")
+        @NotBlank(message = "La descripcion es obligatoria")
         String descripcion,
         
         @NotNull(message = "El precio es obligatorio")
@@ -34,7 +36,7 @@ public record DTORegistroProducto(
         @Min(value = 1, message = "El stock no puede ser menor que 1")
         Integer stock,
         
-        @NotNull(message = "La categoria es obligatorio")
+        @NotNull(message = "La categoria es obligatoria")
         @Valid
         Categoria categoria
         
